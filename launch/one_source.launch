@@ -2,7 +2,8 @@
   <arg name="use_sim_time" default="true" />
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
-  <arg name="world_name" default="$(find gazebo_radiation_plugins)/custom_models/one_point_source/one_point_source.world" />
+  <!-- arg name="world_name" default="$(find gazebo_radiation_plugins)/custom_models/one_point_source/one_point_source.world" /-->
+  <arg name="world_name" default="$(find gazebo_radiation_plugins)/custom_models/one_point_source/test_world.world" />
 
   <param name="use_sim_time" value="$(arg use_sim_time)"/>
 
@@ -16,7 +17,7 @@
   <!--Load params -->
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/one_point_source/configs/attentuation.yaml" command="load"  />
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/one_point_source/configs/sensors.yaml" command="load"  />
-  <rosparam file="$(find gazebo_radiation_plugins)/custom_models/rone_point_source/configs/radiation.yaml" command="load"  />
+  <rosparam file="$(find gazebo_radiation_plugins)/custom_models/one_point_source/configs/radiation.yaml" command="load"  />
 
   <!-- Launch Gazebo with the specified world -->
 

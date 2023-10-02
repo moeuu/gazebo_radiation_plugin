@@ -7,11 +7,3 @@ sensors:
     mu: 0.0
     sigma: 0.0
     angle_limit: 3.2
-  sensor_1:
-    type: "gamma"
-    range: 100
-    collimated: ""
-    sensitivity_function: ""
-    mu: 0.0
-    sigma: 0.0
-    angle_limit: 3.2

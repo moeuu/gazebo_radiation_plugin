@@ -20,7 +20,6 @@
 
   <!-- Launch Gazebo with the specified world -->
 
-  <node name="gazebo" pkg="gazebo_radiation_plugins" type="gazebo"  output="screen"
-  args="--verbose $(arg world_name)" />
+  <node name="gazebo" pkg="gazebo_radiation_plugins" type="gazebo"  output="screen" args="--verbose $(arg world_name)" />
 
 </launch>

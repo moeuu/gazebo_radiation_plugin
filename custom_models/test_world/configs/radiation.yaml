@@ -4,7 +4,3 @@ sources:
     type: gamma
     units: cps
     value: 100.0
-    x: 0
-    y: 0
-    z: 0
-

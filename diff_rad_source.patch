@@ -1,0 +1,66 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ffcd777..1a1a146 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.8.3)
+ project(gazebo_radiation_plugins)
+ 
+-add_definitions(-std=c++11)
++add_definitions(-std=c++17)
+ 
+ find_package(catkin REQUIRED COMPONENTS
+   roscpp
+diff --git a/custom_models/test_world/configs/radiation.yaml b/custom_models/test_world/configs/radiation.yaml
+index 715d716..da1698f 100644
+--- a/custom_models/test_world/configs/radiation.yaml
++++ b/custom_models/test_world/configs/radiation.yaml
+@@ -4,7 +4,3 @@ sources:
+     type: gamma
+     units: cps
+     value: 100.0
+-    x: 0
+-    y: 0
+-    z: 0
+-
+diff --git a/custom_models/test_world/test_world.world b/custom_models/test_world/test_world.world
+index 955bfa3..b279cb9 100644
+--- a/custom_models/test_world/test_world.world
++++ b/custom_models/test_world/test_world.world
+@@ -93,10 +93,33 @@
+     </link>
+   </model>
+   <model name="source_0">
+-    <pose>0 0 0.2 0 0 0</pose>
++    <pose>-1 -4 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+     <static>true</static>
+-    <link name="link_source_0">
+-      <pose>0.0 0 0 0 0 0</pose>
++    <link name="link">
++      <collision name="collision">
++        <geometry>
++          <box>
++            <size>0.1 0.1 0.1</size> <!-- length width height -->
++          </box>
++        </geometry>
++      </collision>
++      <visual name="visual">
++        <geometry>
++          <box>
++            <size>0.1 0.1 0.1</size>
++          </box>
++        </geometry>
++        <material>
++          <ambient>0 1 0 1</ambient> <!-- RGBA for green -->
++          <diffuse>0 1 0 1</diffuse>
++        </material>
++      </visual>
++      <sensor name="radiation_source_0" type="radiation_source">
++        <always_on> 1 </always_on>
++        <update_rate> 1.0 </update_rate>
++        <topic>source_0/gamma</topic>
++        <plugin filename="libradiation_source_plugin.so" name="radiation_source_plugin" />
++      </sensor>
+     </link>
+   </model>
+ 

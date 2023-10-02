@@ -41,6 +41,13 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen"
 	      args="-urdf -model jackal -param robot_description -x -0 -y 0 -z 1.0" />
 
+  <!-- Spawn sensor -->
+  <node name="spawn_sensor_node" pkg="gazebo_ros" type="spawn_model" output="screen"
+	      args="-file $(find gazebo_radiation_plugins)/sdf/radiation_sensor.sdf -sdf -x -0 -y 0 -z 5.0 -model sensor" />
+
+  <!-- Spawn sources-->
+  <node name="load_radiation_sources_node" pkg="gazebo_radiation_plugins" type="load_radiation_sources.py" output="screen" />
+
   <!-- Attach sensor to Jackal -->
   <node pkg="tf" type="static_transform_publisher" name="sim_sensor_to_robot" args="0 0 0 0 0 0 base_link sim_sensor 100"/>
 

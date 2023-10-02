@@ -42,24 +42,24 @@
       <wall_time>0 0</wall_time>
     </state>
   <model name="concrete_0">
-    <pose>0 0 0.2 0 0 0</pose>
+    <pose>4.5 0 -3.5 0 0 0</pose>
     <static>true</static>
     <link name="link_">
       <pose>0.0 0 0 0 0 0</pose>
       <collision name="collision_concrete_0">
         <geometry>
-          <mesh><uri>model://si/models/MezzanineWalls_concrete.dae</uri></mesh>
+          <mesh><uri>model://SI/models/MezzanineWalls_concrete.dae</uri></mesh>
         </geometry>
       </collision>
       <visual name="visual_concrete_0">
         <geometry>
-          <mesh><uri>model://si/models/MezzanineWalls_concrete.dae</uri></mesh>
+          <mesh><uri>model://SI/models/MezzanineWalls_concrete.dae</uri></mesh>
         </geometry>
       </visual>
     </link>
   </model>
   <model name="source_0">
-    <pose>1 1 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>1 1 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -89,7 +89,7 @@
     </link>
   </model>
   <model name="source_1">
-    <pose>2 2 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>2 2 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -119,7 +119,7 @@
     </link>
   </model>
   <model name="source_2">
-    <pose>3 3 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>3 3 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -149,7 +149,7 @@
     </link>
   </model>
   <model name="source_3">
-    <pose>4 4 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>4 4 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -179,7 +179,7 @@
     </link>
   </model>
   <model name="source_4">
-    <pose>5 5 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>5 5 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -209,7 +209,7 @@
     </link>
   </model>
   <model name="source_5">
-    <pose>-1 -1 2 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <pose>6 6 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -235,6 +235,36 @@
         <update_rate> 1.0 </update_rate>
         <topic>source_5/gamma</topic>
         <plugin filename="libradiation_source_plugin.so" name="radiation_source_plugin" />
+      </sensor>
+    </link>
+  </model>
+  <model name="sensor_0">
+    <pose>1 2 0 0 0 0</pose> <!-- x y z roll pitch yaw -->
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size> <!-- length width height -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient> <!-- RGBA for green -->
+          <diffuse>1 0 0 1</diffuse>
+        </material>
+      </visual>
+      <sensor name="radiation_sensor_0" type="radiation_sensor">
+        <always_on> 1 </always_on>
+        <update_rate> 1.0 </update_rate>
+        <topic>source_0</topic>
+        <plugin filename="libradiation_sensor_plugin.so" name="radiation_sensor_plugin" />
       </sensor>
     </link>
   </model>

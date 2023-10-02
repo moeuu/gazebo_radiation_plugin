@@ -23,22 +23,4 @@
   <node name="gazebo" pkg="gazebo_radiation_plugins" type="gazebo"  output="screen"
   args="--verbose $(arg world_name)" />
 
-  <!-- Configuration of Jackal which you would like to simulate.
-       See jackal_description for details. -->
-       <arg name="config" default="$(arg default_config)" />
-
-  <!-- Attach sensor to Jackal -->
-  <node pkg="tf" type="static_transform_publisher" name="sim_sensor_to_robot" args="0 0 0 0 0 0 base_link sim_sensor 100"/>
-
-  <!-- Run gmapping -->
-  <!-- include file="$(find jackal_navigation)/launch/include/gmapping.launch" /-->
-
-  <!-- Run Move Base -->
-  <!-- include file="$(find gazebo_radiation_plugins)/launch/move_base.launch" /-->
-
-  <!-- <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" /> -->
-
-  <!-- Run RVIZ -->
-  <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find gazebo_radiation_plugins)launch/rviz_config/husky_radiation_mapping.rviz"/>
-
 </launch>

@@ -14,18 +14,22 @@ class Mover(object):
     def __init__(self):
 
         self.i = 0
-        self.filename = "/home/morita/Radiation_distribution_machine_learning/data/result1.csv"
+        self.filename = "/home/morita/src/Radiation_distribution_machine_learning/data/result2.csv"
         f = open(self.filename, "w")
         f.close()
         rospy.init_node('set_pose')
-        rospy.Subscriber("/radiation_sensor_plugin/sensor_0", Simulated_Radiation_Msg, self.callback)
-        
-        for i in range(6):
-            self.topic_name = "/radiation_source_plugin/source_" + str(i) + "/gamma"
-            self.sub = rospy.Subscriber(self.topic_name, Simulated_Radiation_Msg)
+
+        self.topics = rospy.get_published_topics()
+        self.topic_names = [topic[0] for topic in self.topics]
+        self.j = 0
+        while "/radiation_source_plugin/source_" + str(self.j) + "/gamma" in self.topic_names:
+            self.topic_name = "/radiation_source_plugin/source_" + str(self.j) + "/gamma"
+            self.sub = rospy.wait_for_message(self.topic_name, Simulated_Radiation_Msg, timeout=None)
             f = open(self.filename, "a")
-            f.write("{},{},{},{}\n".format(self.sub.pose.position.x,self.sub.pose.position.y,self.sub.pose.position.z,self.sub.value))
+            f.write("{},{},{},{},{}\n".format(self.sub.pose.position.x,self.sub.pose.position.y,self.sub.pose.position.z,self.sub.value,"source_data"))
             f.close()
+            print("{},{},{},{},{}".format(self.sub.pose.position.x,self.sub.pose.position.y,self.sub.pose.position.z,self.sub.value,self.topic_name))
+            self.j += 1
 
 
         state_msg = ModelState()
@@ -39,7 +43,7 @@ class Mover(object):
         state_msg.pose.orientation.w = 1.0
         self.x = 0
         self.y = 0
-
+        self.rad_pos = False
 
 
         rospy.wait_for_service('/gazebo/set_model_state')
@@ -59,32 +63,25 @@ class Mover(object):
                 set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
                 resp = set_state( state_msg )
 
-                rospy.wait_for_message("/radiation_sensor_plugin/sensor_0", Simulated_Radiation_Msg, timeout=None)
+                self.i += 1
+                self.x = (self.i%14)*1 + 0.5
+                self.y = (np.floor(self.i/14))*1 + 0.5
+                if self.x == 0.0:
+                    self.x = 0.0001
+                if self.y == 0.0:
+                    self.y = 0.0001
+
+                data = rospy.wait_for_message("/radiation_sensor_plugin/sensor_0", Simulated_Radiation_Msg, timeout=None)
+                print(data.value)
+                f = open(self.filename, "a")
+                f.write("{},{},{},{}\n".format(data.pose.position.x,data.pose.position.y,data.pose.position.z,data.value))
+                f.close()
                     
         except rospy.ServiceException as e:
             print("Service call failed: %s" % e)
 
-
-    def callback(self,data):
-        print(data.value)
-        if (data.pose.position.x == self.x)&(self.y == data.pose.position.y):
-            self.i+=1
-            self.x = (self.i%14)*1 + 0.5
-            self.y = (np.floor(self.i/14))*1 + 0.5
-            if self.x == 0.0:
-                self.x = 0.0001
-            if self.y == 0.0:
-                self.y = 0.0001
-            f = open(self.filename, "a")
-            f.write("{},{},{},{}\n".format(data.pose.position.x,data.pose.position.y,data.pose.position.z,data.value))
-            f.close()
-
-    def run(self):
-        rospy.spin()
-
 if __name__ == '__main__':
     try:
         m = Mover()
-        m.run()
     except rospy.ROSInterruptException:
         pass

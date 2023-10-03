@@ -1,9 +1,0 @@
-sources:
-  source_0:
-    noise: 500.0
-    type: gamma
-    units: cps
-    value: 50.0
-    x: 40
-    y: 40
-    z: 0

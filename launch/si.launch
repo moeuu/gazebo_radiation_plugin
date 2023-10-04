@@ -23,7 +23,7 @@
   <node name="gazebo" pkg="gazebo_radiation_plugins" type="gazebo"  output="screen" args="--verbose $(arg world_name)" />
 
 
- <!-- Spawn sensor -->
- <node name="spawn_mysensor_model" pkg="gazebo_ros" type="spawn_model" output="screen" 
-  args="-file $(find gazebo_radiation_plugins)/custom_models/SI/models/mysensor.sdf -sdf -model sensor_0" />
+  <!-- Spawn sensor -->
+  <node name="spawn_mysensor_model" pkg="gazebo_ros" type="spawn_model" output="screen" 
+    args="-file $(find gazebo_radiation_plugins)/custom_models/SI/models/mysensor.sdf -sdf -model sensor_0" />
 </launch>

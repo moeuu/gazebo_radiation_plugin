@@ -64,7 +64,7 @@ class Mover(object):
 
                 rospy.wait_for_message("/radiation_sensor_plugin/sensor_0", Simulated_Radiation_Msg, timeout=None)
                     
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             print "Service call failed: %s" % e
 
 if __name__ == '__main__':

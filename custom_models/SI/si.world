@@ -65,14 +65,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>
@@ -95,14 +95,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>
@@ -125,14 +125,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>
@@ -155,14 +155,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>
@@ -185,14 +185,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>
@@ -215,14 +215,14 @@
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> <!-- length width height -->
+            <size>0.01 0.01 0.01</size> <!-- length width height -->
           </box>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size>
+            <size>0.01 0.01 0.01</size>
           </box>
         </geometry>
         <material>

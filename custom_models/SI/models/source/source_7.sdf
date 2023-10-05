@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
-  <model name="source_{name}">
-    <pose>{x} {y} 0 0 0 0</pose>
+  <model name="source_7">
+    <pose>4.5 9.5 0 0 0 0</pose>
     <static>true</static>
     <link name="link">
       <collision name="collision">
@@ -22,10 +22,10 @@
           <diffuse>0 1 0 1</diffuse>
         </material>
       </visual>
-      <sensor name="radiation_source_{name}" type="radiation_source">
+      <sensor name="radiation_source_7" type="radiation_source">
         <always_on> 1 </always_on>
         <update_rate> 1.0 </update_rate>
-        <topic>souce_{name}/gamma</topic>
+        <topic>souce_7/gamma</topic>
         <plugin filename="libradiation_source_plugin.so" name="radiation_source_plugin" />
       </sensor>
     </link>

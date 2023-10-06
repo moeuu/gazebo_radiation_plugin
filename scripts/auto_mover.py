@@ -11,11 +11,18 @@ class auto_mover(object):
         self.source_folder_path = '../custom_models/SI/models/source'
         self.source_template_path = "../custom_models/SI/template/radiation_source_template.sdf"
         self.random_iter = random.randint(1, 10)
-        for i in range(10000):
-            self.random_iter = random.randint(1, 10)
-            for j in range(self.random_iter):
+        for i in range(10):
+            #gazebo起動
+            os.system("rosrun gazebo_radiation_plugins gazebo --verbose")
+            #random_rad個の点線源生成
+            self.random_rad = random.randint(1, 10)
+            for j in range(self.random_rad):
                 self.create_source(j)
-            if(i != 9999):
+            os.system("rosrun gazebo_radiation_plugins load_radiation_sources.py")
+            #i番目のresult作成
+            self.mover = "rosrun gazebo_radiation_plugins model_mover_grid_test.py " + str(i)
+            os.system(self.mover)
+            if(i != 9):
                 self.delete_source()
 
     def delete_source(self):

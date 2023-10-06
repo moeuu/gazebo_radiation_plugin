@@ -55,9 +55,9 @@ class Mover(object):
         rospy.wait_for_service('/gazebo/set_model_state')
         try:
             self.i = 0      
-            self.x = (self.i%140)*0.1 + 0.05
-            self.y = (np.floor(self.i/140))*0.1 + 0.05
-            while self.i < 100*140:
+            self.x = (self.i%14)*1 + 0.5
+            self.y = (np.floor(self.i/14))*1 + 0.5
+            while self.i < 10*14:
                 
                 quaternion = tf.transformations.quaternion_from_euler(0.0,0.0,0.0)
                 state_msg.pose.orientation.x = quaternion[0]
@@ -70,8 +70,8 @@ class Mover(object):
                 resp = set_state( state_msg )
 
                 self.i += 1
-                self.x = (self.i%140)*0.1 + 0.05
-                self.y = (np.floor(self.i/140))*0.1 + 0.05
+                self.x = (self.i%14)*1 + 0.5
+                self.y = (np.floor(self.i/14))*1 + 0.5
                 if self.x == 0.0:
                     self.x = 0.0001
                 if self.y == 0.0:

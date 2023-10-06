@@ -1,9 +1,21 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <model name="source_6">
-    <pose>10.5 5.5 0 0 0 0</pose>
+    <pose>12.5 5.5 0 0 0 0</pose>
     <static>true</static>
     <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia> <!-- inertias are tricky to compute -->
+          <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+          <ixx>0.083</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+          <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+          <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+          <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+          <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+          <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+        </inertia>
+      </inertial>
       <collision name="collision">
         <geometry>
           <box>
@@ -14,7 +26,7 @@
       <visual name="visual">
         <geometry>
           <box>
-            <size>0.01 0.01 0.01</size>
+            <size>0.1 0.1 0.1</size>
           </box>
         </geometry>
         <material>
@@ -25,7 +37,7 @@
       <sensor name="radiation_source_6" type="radiation_source">
         <always_on> 1 </always_on>
         <update_rate> 1.0 </update_rate>
-        <topic>souce_6/gamma</topic>
+        <topic>source_6/gamma</topic>
         <plugin filename="libradiation_source_plugin.so" name="radiation_source_plugin" />
       </sensor>
     </link>

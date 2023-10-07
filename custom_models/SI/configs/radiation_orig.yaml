@@ -3,39 +3,29 @@ sources:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 2225
+    value: 500.0
   source_1:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 2604
+    value: 500.0
   source_2:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 2244
+    value: 5000.0
   source_3:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 297
+    value: 200.0
   source_4:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 4088
+    value: 900.0
   source_5:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 6466
-  source_6:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 642
-  source_7:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 7663
+    value: 100.0

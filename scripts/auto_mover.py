@@ -6,12 +6,13 @@ import rospkg
 import random
 import subprocess
 import time
+import numpy as np
 
 class auto_mover(object):
     def __init__(self) -> None:
         self.source_folder_path = '../custom_models/SI/models/source'
         self.source_template_path = "../custom_models/SI/template/radiation_source_template.sdf"
-        for i in range(1):
+        for i in range(100):
             roscore_process = subprocess.Popen(["roscore"])
             #gazebo起動
             gazebo_process = subprocess.Popen(["rosrun", "gazebo_radiation_plugins", "gazebo", "--verbose"])
@@ -22,24 +23,24 @@ class auto_mover(object):
             self.create_source()
             os.system("rosparam load ../custom_models/SI/configs/radiation.yaml")
             os.system("rosparam load ../custom_models/SI/configs/sensors.yaml")
-            time.sleep(5)
+            time.sleep(2)
             #線源読み込み
             os.system("rosrun gazebo_radiation_plugins load_radiation_sources.py")
             #センサー読み込み
+            time.sleep(2)
             os.system("rosrun gazebo_ros spawn_model -file ../custom_models/SI/models/mysensor.sdf -sdf -model sensor_0")
             #i番目のresult作成
-            self.mover = "rosrun gazebo_radiation_plugins model_mover_grid_test.py " + str(i)
+            time.sleep(2)
+            self.mover = "rosrun gazebo_radiation_plugins model_mover_grid.py " + str(i+22)
             os.system(self.mover)
-            if(i != 0):
+            if(i != 3):
                 self.delete_source()
-            gazebo_process.terminate()
-            gazebo_process.wait()
-            if gazebo_process.returncode == 0:
-                print("Gazeboプロセスは正常に終了しました。")
-            else:
-                print("Gazeboプロセスはエラーで終了しました。")
             roscore_process.terminate()
-
+            time.sleep(3)
+            gazebo_process.terminate()
+            os.system("pkill gzserver")
+            os.system("killall gzclient")
+            time.sleep(5)
 
     def delete_source(self):
         files = os.listdir(self.source_folder_path)
@@ -70,7 +71,7 @@ class auto_mover(object):
             rad_yaml_i = rad_yaml_temp.read()
         self.rad_yaml = "../custom_models/SI/configs/radiation.yaml"
         for i in range(self.random_rad):
-            random_value = random.randint(100, 10000)
+            random_value = np.random.uniform(500, 10000)
             rad_yaml_i = rad_yaml_i + "\n  source_{}:\n    noise: 0.0\n    type: gamma\n    units: Sv/h\n    value: {}".format(i, random_value)
             with open(self.rad_yaml, "w") as rad_yaml:
                 rad_yaml.write(rad_yaml_i)

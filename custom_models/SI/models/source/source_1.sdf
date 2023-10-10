@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <model name="source_1">
-    <pose>0.5 5.5 0 0 0 0</pose>
+    <pose>5.5 2.5 0 0 0 0</pose>
     <static>true</static>
     <link name="link">
       <collision name="collision">

@@ -42,7 +42,7 @@ class Mover(object):
         state_msg.model_name = 'sensor_0'
         state_msg.pose.position.x = 0.0
         state_msg.pose.position.y = 0
-        state_msg.pose.position.z = 0
+        state_msg.pose.position.z = 0.5
         state_msg.pose.orientation.x = 0
         state_msg.pose.orientation.y = 0
         state_msg.pose.orientation.z = 0
@@ -50,7 +50,6 @@ class Mover(object):
         self.x = 0
         self.y = 0
         self.rad_pos = False
-
 
         rospy.wait_for_service('/gazebo/set_model_state')
         try:

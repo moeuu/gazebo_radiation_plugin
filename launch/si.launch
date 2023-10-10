@@ -16,7 +16,7 @@
   <!--Load params -->
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/SI/configs/attentuation.yaml" command="load"  />
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/SI/configs/sensors.yaml" command="load"  />
-  <!-- rosparam file="$(find gazebo_radiation_plugins)/custom_models/SI/configs/radiation.yaml" command="load"  -/-->
+  <rosparam file="$(find gazebo_radiation_plugins)/custom_models/SI/configs/radiation.yaml" command="load"  />
 
   <!-- Launch Gazebo with the specified world -->
 

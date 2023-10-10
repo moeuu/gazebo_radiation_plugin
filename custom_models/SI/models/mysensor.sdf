@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <sdf version="1.4">
   <model name="radiation_sensor">
-    <pose>1 2 0 0 0 0</pose>
+    <pose>1 1 0.5 0 0 0</pose>
     <static>true</static>
     <link name="link">
       <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.1</size> 
+            <size>0.01 0.01 0.01</size> 
           </box>
         </geometry>
       </collision>
@@ -24,7 +24,7 @@
       </visual>
       <sensor name="radiation_sensor" type="radiation_sensor">
         <always_on> 1 </always_on>
-        <update_rate> 1.0 </update_rate>
+        <update_rate> 50 </update_rate>
         <topic>sensor_0</topic>
         <plugin filename="libradiation_sensor_plugin.so" name="radiation_sensor_plugin" />
       </sensor>

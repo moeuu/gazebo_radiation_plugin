@@ -42,7 +42,7 @@ class Mover(object):
         state_msg.model_name = 'sensor_0'
         state_msg.pose.position.x = 0.0
         state_msg.pose.position.y = 0
-        state_msg.pose.position.z = 0
+        state_msg.pose.position.z = 0.5
         state_msg.pose.orientation.x = 0
         state_msg.pose.orientation.y = 0
         state_msg.pose.orientation.z = 0
@@ -51,6 +51,7 @@ class Mover(object):
         self.y = 0
         self.rad_pos = False
 
+        rate = rospy.Rate(10)
 
         rospy.wait_for_service('/gazebo/set_model_state')
         try:
@@ -82,6 +83,8 @@ class Mover(object):
                 f = open(self.filename, "a")
                 f.write("{},{},{},{}\n".format(data.pose.position.x,data.pose.position.y,data.pose.position.z,data.value))
                 f.close()
+
+                rate.sleep()
                     
         except rospy.ServiceException as e:
             print("Service call failed: %s" % e)

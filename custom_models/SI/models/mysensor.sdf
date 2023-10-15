@@ -24,7 +24,7 @@
       </visual>
       <sensor name="radiation_sensor" type="radiation_sensor">
         <always_on> 1 </always_on>
-        <update_rate> 50 </update_rate>
+        <update_rate> 30 </update_rate>
         <topic>sensor_0</topic>
         <plugin filename="libradiation_sensor_plugin.so" name="radiation_sensor_plugin" />
       </sensor>

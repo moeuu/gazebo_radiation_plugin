@@ -13,6 +13,12 @@ class auto_mover(object):
         self.source_folder_path = '../custom_models/SI/models/source'
         self.source_template_path = "../custom_models/SI/template/radiation_source_template.sdf"
         for i in range(100):
+            self.filename = "/home/morita/src/Radiation_distribution_machine_learning/data/rad_cnt/result" + str(i) + ".csv"
+            if os.path.exists(self.filename):
+                print("ファイルが存在します." + " i = " +  str(i))
+                continue
+            else:
+                print("ファイルは存在しません." + " i = " + str(i))
             roscore_process = subprocess.Popen(["roscore"])
             #gazebo起動
             gazebo_process = subprocess.Popen(["rosrun", "gazebo_radiation_plugins", "gazebo", "--verbose"])
@@ -21,20 +27,20 @@ class auto_mover(object):
             self.random_rad = random.randint(1, 10)
             self.create_source_yaml()
             self.create_source()
+            time.sleep(2)
             os.system("rosparam load ../custom_models/SI/configs/radiation.yaml")
             os.system("rosparam load ../custom_models/SI/configs/sensors.yaml")
             time.sleep(2)
             #線源読み込み
             os.system("rosrun gazebo_radiation_plugins load_radiation_sources.py")
+            time.sleep(5)
             #センサー読み込み
-            time.sleep(2)
             os.system("rosrun gazebo_ros spawn_model -file ../custom_models/SI/models/mysensor.sdf -sdf -model sensor_0")
-            #i番目のresult作成
             time.sleep(2)
-            self.mover = "rosrun gazebo_radiation_plugins model_mover_grid.py " + str(i+22)
+            #i番目のresult作成
+            self.mover = "rosrun gazebo_radiation_plugins model_mover_grid.py " + str(i)
             os.system(self.mover)
-            if(i != 3):
-                self.delete_source()
+            self.delete_source()
             roscore_process.terminate()
             time.sleep(3)
             gazebo_process.terminate()

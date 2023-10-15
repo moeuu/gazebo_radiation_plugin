@@ -3,39 +3,24 @@ sources:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 4845.5142309476
+    value: 984.0021689024848
   source_1:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 7265.401017806063
+    value: 9266.828502177696
   source_2:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 6346.80076564814
+    value: 1925.743619604261
   source_3:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 7519.608060461759
+    value: 2209.2253629290344
   source_4:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 4906.468772325184
-  source_5:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 2941.443642104072
-  source_6:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 9138.312560323966
-  source_7:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 8895.045969503937
+    value: 6697.697211818655

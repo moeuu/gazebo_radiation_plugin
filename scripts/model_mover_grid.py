@@ -13,7 +13,6 @@ import sys
 class Mover(object):
 
     def __init__(self):
-
         self.i = 0
         if len(sys.argv) > 1:
             self.file_num = sys.argv[1]

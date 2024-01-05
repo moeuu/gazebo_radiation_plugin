@@ -12,7 +12,7 @@ class auto_mover(object):
     def __init__(self) -> None:
         self.source_folder_path = '../custom_models/SI/models/source'
         self.source_template_path = "../custom_models/SI/template/radiation_source_template.sdf"
-        for i in range(100):
+        for i in range(400):
             self.filename = "/home/morita/src/Radiation_distribution_machine_learning/data/rad_cnt/result" + str(i) + ".csv"
             if os.path.exists(self.filename):
                 print("ファイルが存在します." + " i = " +  str(i))

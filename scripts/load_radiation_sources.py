@@ -6,7 +6,7 @@ import os
 
 rospack = rospkg.RosPack()
 
-sources_folder = rospack.get_path("gazebo_radiation_plugins")+"/custom_models/SI/models/source/"
+sources_folder = rospack.get_path("gazebo_radiation_plugins")+"/custom_models/GraduateT/models/source/"
 
 sources = rospy.get_param("sources")
 

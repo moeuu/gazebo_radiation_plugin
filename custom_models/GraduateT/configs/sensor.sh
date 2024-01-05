@@ -1,0 +1,1 @@
+rosrun gazebo_ros spawn_model -file /home/morita/catkin_ws/src/gazebo_radiation_plugin/custom_models/GraduateT/models/mysensor.sdf -sdf -model sensor_0

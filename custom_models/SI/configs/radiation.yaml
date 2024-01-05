@@ -3,24 +3,19 @@ sources:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 984.0021689024848
+    value: 2850.6587291477804
   source_1:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 9266.828502177696
+    value: 5902.894995288812
   source_2:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 1925.743619604261
+    value: 6212.95964831393
   source_3:
     noise: 0.0
     type: gamma
     units: Sv/h
-    value: 2209.2253629290344
-  source_4:
-    noise: 0.0
-    type: gamma
-    units: Sv/h
-    value: 6697.697211818655
+    value: 6611.742448247437

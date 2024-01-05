@@ -20,7 +20,7 @@ class Mover(object):
             print("file_number:", self.file_num)
         else:
             print("File number isn't provided.")
-        self.filename = "/home/morita/src/Radiation_distribution_machine_learning/data/rad_cnt/result" + str(self.file_num) + ".csv"
+        self.filename = "/home/morita/src/Radiation_distribution_machine_learning/test/rad_cnt/test_" + str(self.file_num) + ".csv"
         f = open(self.filename, "w")
         f.close()
         rospy.init_node('set_pose')
